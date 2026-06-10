@@ -208,6 +208,12 @@ function HeroRitualDemo() {
             ? (r.working ? "集中中：静止・無音・減光。詰まったら TAP ZONE で立て直し。" : "小休止：手が止まると、呼吸がそっと戻る。")
             : "BUNCHIN は必要な時だけ、短く話す。"}
       </p>
+
+      {/* voice credit — VOICEVOX terms require this attribution; keep visible wherever the demo voice plays */}
+      <div style={{ display: "flex", alignItems: "baseline", gap: 9, margin: "0 2px", paddingTop: 10, borderTop: "1px solid #141414" }}>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 9, letterSpacing: "0.16em", color: "#3f3f3f", flexShrink: 0 }}>CREDIT</span>
+        <span style={{ fontFamily: "var(--font-mono)", fontSize: 9.5, letterSpacing: "0.04em", color: "#5a5a5a" }}>音声合成 VOICEVOX:四国めたん</span>
+      </div>
     </div>
   );
 }
