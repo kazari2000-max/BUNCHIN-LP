@@ -2,7 +2,7 @@
 // lp_shared.jsx — shared constants + small primitives for the BUNCHIN tester LP.
 
 // External form endpoints — REPLACE with the real Google Form URLs before launch.
-const FORM_TESTER = "https://forms.gle/REPLACE-tester";
+const FORM_TESTER = "https://docs.google.com/forms/d/e/1FAIpQLScM3rGjqpueaUAyTBjY3ucDO-lXQuyf8vQcyK88QppE_IMKZg/viewform";
 const FORM_NOTIFY = "https://forms.gle/REPLACE-notify";
 
 const C = {
