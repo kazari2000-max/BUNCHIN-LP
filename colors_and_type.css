@@ -1,0 +1,195 @@
+/* ============================================================
+   BUNCHIN Design System — colors_and_type.css
+   "High Contrast Terminal / Paperweight Anchor / Pixel Companion"
+   Import this file to inherit BUNCHIN's foundational tokens.
+   ============================================================ */
+
+/* ---- Fonts ------------------------------------------------ */
+/* GenEiMGothic2 (源暎ゴシック) — primary Japanese + display face.
+   Heavy = display/headings, Medium = UI labels, Regular = body. */
+@font-face {
+  font-family: "GenEi M Gothic 2";
+  src: url("fonts/GenEiMGothic2-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GenEi M Gothic 2";
+  src: url("fonts/GenEiMGothic2-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+@font-face {
+  font-family: "GenEi M Gothic 2";
+  src: url("fonts/GenEiMGothic2-Heavy.ttf") format("truetype");
+  font-weight: 900;
+  font-display: swap;
+}
+/* Monospace Latin — terminal labels, model numbers, signal text.
+   JetBrains Mono is the documented substitute (see README). Load via
+   <link> from Google Fonts in your HTML, or rely on the fallback stack. */
+/* DenkiChip (電気チップ) — pixel / dot-matrix LCD face. The authentic
+   "device voice": signal words, on-LCD text, hero kickers. Full JP coverage
+   (Latin + kana + kanji). Self-hosted, uploaded by the user. */
+@font-face {
+  font-family: "DenkiChip";
+  src: url("fonts/DenkiChip.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Type families ---- */
+  --font-display: "GenEi M Gothic 2", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-body: "GenEi M Gothic 2", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --font-mono: "JetBrains Mono", "SFMono-Regular", "Consolas", "Menlo", monospace;
+  --font-pixel: "DenkiChip", "JetBrains Mono", monospace;
+
+  /* ---- Type weights ---- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-heavy: 900;
+
+  /* ===========================================================
+     COLOR — color is a state signal, never decoration.
+     =========================================================== */
+
+  /* Base surfaces */
+  --flat-black: #050505;      /* base canvas — terminal screen ground */
+  --terminal-panel: #0D0D0D;  /* UI block / info-surface background */
+  --grid-gray: #262626;       /* grid lines, rules, hairline structure */
+
+  /* Ink */
+  --terminal-white: #F7F3EA;  /* primary text, outlines, key info */
+  --muted-gray: #9C9C9C;      /* sub-info, captions, inactive state */
+
+  /* Signal colors — each maps to one machine state */
+  --signal-blue: #6EB6FF;     /* MEASURE/FOCUS — progress, timer, structure */
+  --active-yellow: #FFE45C;   /* STANDBY/INPUT — waiting, cursor, "TAP" */
+  --complete-green: #78FF9E;  /* COMPLETE/SAVE — saved, positive confirm */
+  --reset-coral: #FF7B66;     /* RECOVERY/RESET — re-scope, change goal */
+
+  /* ---- Semantic aliases ---- */
+  --bg: var(--flat-black);
+  --panel: var(--terminal-panel);
+  --fg1: var(--terminal-white);
+  --fg2: var(--muted-gray);
+  --line: var(--grid-gray);
+  --line-strong: var(--terminal-white);
+
+  /* ---- Spacing scale (8px grid, blocky) ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Borders — mass via line, never shadow ---- */
+  --border-hair: 1px solid var(--grid-gray);
+  --border-strong: 1.5px solid var(--terminal-white);
+  --border-block: 2px solid var(--terminal-white);
+  --radius: 0px;   /* HARD SHELL: no rounded corners in the terminal UI */
+
+  /* ---- Motion ---- */
+  --ease-terminal: steps(1, end); /* @kind other */
+  --ease-cursor: linear; /* @kind other */
+  --dur-blink: 1.06s; /* @kind other */
+  --dur-switch: 0ms; /* @kind other */
+}
+
+/* ============================================================
+   SEMANTIC TYPE ROLES
+   Bottom-heavy, monospaced labels, heavy display headings.
+   ============================================================ */
+
+.h1, h1.bunchin {
+  font-family: var(--font-display);
+  font-weight: var(--weight-heavy);
+  font-size: clamp(40px, 6vw, 80px);
+  line-height: 1.02;
+  letter-spacing: -0.01em;
+  color: var(--fg1);
+}
+
+.h2, h2.bunchin {
+  font-family: var(--font-display);
+  font-weight: var(--weight-heavy);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.08;
+  letter-spacing: -0.005em;
+  color: var(--fg1);
+}
+
+.h3, h3.bunchin {
+  font-family: var(--font-display);
+  font-weight: var(--weight-medium);
+  font-size: 22px;
+  line-height: 1.2;
+  color: var(--fg1);
+}
+
+.body, p.bunchin {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg1);
+}
+
+.small {
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--fg2);
+}
+
+/* Monospace label — the terminal voice. UPPERCASE, tracked out. */
+.label, .mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg2);
+}
+
+/* Signal text — the short words on the device screen.
+   DenkiChip pixel face = the authentic LCD voice. */
+.signal {
+  font-family: var(--font-pixel);
+  font-weight: 400;
+  font-size: 15px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.signal--standby { color: var(--active-yellow); }
+.signal--focus { color: var(--signal-blue); }
+.signal--complete { color: var(--complete-green); }
+.signal--recovery { color: var(--reset-coral); }
+
+/* Pixel utility — DenkiChip LCD type for any device/terminal moment */
+.pixel {
+  font-family: var(--font-pixel);
+  letter-spacing: 0.06em;
+}
+
+/* Blinking cursor primitive */
+@keyframes bunchin-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+.cursor::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 0.12em;
+  vertical-align: -0.16em;
+  background: var(--active-yellow);
+  animation: bunchin-blink var(--dur-blink) var(--ease-cursor) infinite;
+}
